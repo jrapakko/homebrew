@@ -22,6 +22,12 @@ class Macvim < Formula
 
   env :std if MacOS.version <= :snow_leopard
   # Help us! We'd like to use superenv in these environments too
+  
+  # Workaround for native fullscreening bug (https://code.google.com/p/macvim/issues/detail?id=514#c2)
+  patch do
+    url "https://gist.githubusercontent.com/jrapakko/69c5b5979e62757faea5/raw/4f310bd5139d0615e25acd5c02243914035ef77c/fullscreen_workaround.diff"
+    sha1 "f5053abc806819b9cb6b719a81a55ea984015725"
+  end
 
   def install
     # MacVim doesn't have and required any Python package, unset PYTHONPATH.
